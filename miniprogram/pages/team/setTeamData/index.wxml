@@ -1,0 +1,37 @@
+<view>
+  <view class="form_title">
+    <van-sticky>
+      <van-button type="info">球队资料信息修改</van-button>
+    </van-sticky>
+  </view>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="section">
+      <view class="section__title">
+        <text>球队ID</text>
+      </view>
+      <input name="teamID" value="{{teaminfo.id}}" disabled />
+    </view>
+    <view class="section">
+      <view class="section__title">
+        <text>球队名称</text>
+      </view>
+      <input name="teamName" value="{{teaminfo.teamName}}" disabled />
+    </view>
+    <view class="section">
+      <view class="section__title">球队口号</view>
+      <input name="teamSlogan" />
+    </view>
+    <view class="section">
+      <view class="section__title">球队头像</view>
+      <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" max-count="1" bind:delete="DelPic" />
+    </view>
+    <view class="section">
+      <view class="section__title">球队描述</view>
+      <input name="teamDesc" />
+    </view>
+    <view class="btn-area">
+      <!-- <button formType="submit">创建球队</button> -->
+      <van-button formType="submit" type="primary" size="large" round>更新球队信息</van-button>
+    </view>
+  </form>
+</view>

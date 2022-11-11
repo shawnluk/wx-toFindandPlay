@@ -1,0 +1,92 @@
+page {
+  height: 100vh;
+  width: 100vw;
+}
+#van-dialog {
+  height: 200px;
+}
+#van-dialog .dropdown {
+  height: 200px;
+}
+#van-dialog .dropdown .dropdown_menu .van-dropdown-item .van-dropdown-item--down {
+  top: 100px !important;
+}
+.team_title_container {
+  margin-bottom: 2vh;
+  width: 100%;
+  height: 20vh;
+  background-color: #0f70ca;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.team_title_container .team_avatar {
+  margin-top: 10rpx;
+}
+.team_data_container {
+  margin-top: 2vh;
+}
+.team_data_container .team_data {
+  display: flex;
+  width: 100vw;
+}
+.team_data_container .team_data .van-cell {
+  width: 25vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1rpx dotted gray;
+  border-top: 1rpx dotted gray;
+  border-bottom: 1rpx dotted gray;
+  padding-left: 16rpx;
+  padding-right: 16rpx;
+}
+.team_manage_container {
+  margin-top: 2vh;
+}
+.team_manage_container .team_manage {
+  display: flex;
+  width: 100vw;
+}
+.team_manage_container .team_manage .van-cell {
+  width: 25vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1rpx dotted gray;
+  border-top: 1rpx dotted gray;
+  border-bottom: 1rpx dotted gray;
+  padding-left: 16rpx;
+  padding-right: 16rpx;
+}
+.player_show_container {
+  margin-top: 2vh;
+}
+.player_show_container .player_data {
+  display: flex;
+  width: 100vw;
+}
+.player_show_container .player_data .van-cell {
+  width: 25vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1rpx dotted gray;
+  border-top: 1rpx dotted gray;
+  border-bottom: 1rpx dotted gray;
+  padding-left: 16rpx;
+  padding-right: 16rpx;
+}
+.van-tabbar {
+  height: 10vh !important;
+}
+.van-tabbar-item {
+  font-size: 14px !important;
+}
+.van-tabbar-item:hover {
+  background-color: green;
+}

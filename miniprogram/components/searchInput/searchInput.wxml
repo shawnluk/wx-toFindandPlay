@@ -1,0 +1,8 @@
+<!--components/SearchInput.wxml-->
+<!-- <text>components/SearchInput.wxml</text> -->
+<!-- 搜索栏 -->
+<view class="search_input">
+    <navigator url="/pages/team/index"  open-type="navigate">
+        请输入你要搜索的球队名字 / 球场 / 用户名
+    </navigator>
+</view>

@@ -1,0 +1,95 @@
+<van-dialog id="van-dialog" />
+<van-dialog id="van-dialog" use-slot="true" show="{{quitTeamDialog}}" show-cancel-button="true" title='请下拉选择下一任球队队长' bind:confirm='captainConfirm'>
+  <view class="dropdown">
+    <van-dropdown-menu wx:if="{{quitTeamDialog}}" class="dropdown_menu">
+      <van-dropdown-item options="{{ teamMemberList }}" class="van-dropdown-item" bind:change="captainSelect" />
+    </van-dropdown-menu>
+  </view>
+</van-dialog>
+<view>
+  <van-toast id="van-toast" />
+  <!-- 球队信息展示 -->
+  <view class="team_title_container">
+    <van-image class="team_avatar" round width="120rpx" height="120rpx" src="{{teaminfo.teamPic}}" />
+    <view wx:if="{{hasTeam}}">
+      <view wx:if="{{!teaminfo.joinStatus}}">{{teaminfo.teamName}}</view>
+      <view wx:else>{{teaminfo.teamName}}(球队申请中)</view>
+      <view>{{teaminfo.teamSlogan}}</view>
+    </view>
+    <view wx:else>
+      <view>暂无球队信息</view>
+    </view>
+  </view>
+  <van-cell class="toActivity" title="前往赛事活动中心" is-link link-type="switchTab" url="/pages/activity/index" />
+  <view class="team_data_container">
+    <van-cell title="球队资料">
+      <van-icon class-prefix="iconfont" name="teamData" slot="icon" />
+    </van-cell>
+    <view class="team_data">
+      <van-cell title="球队历史" center>
+        <van-icon class-prefix="iconfont" name="teamHistory" slot="icon" />
+      </van-cell>
+      <van-cell title="球队赛程" center>
+        <van-icon class-prefix="iconfont" name="activity" slot="icon" />
+      </van-cell>
+      <van-cell title="球员信息" link-type="navigateTo" url="/pages/team/players/index">
+        <van-icon class-prefix="iconfont" name="players" slot="icon" />
+      </van-cell>
+      <van-cell title="数据排行" center>
+        <van-icon class-prefix="iconfont" name="playerData" slot="icon" />
+      </van-cell>
+    </view>
+  </view>
+  <view class="team_manage_container">
+    <van-cell title="球队管理（权限：队长）">
+      <van-icon class-prefix="iconfont" name="teamManage" slot="icon" />
+    </van-cell>
+    <view class="team_manage">
+      <van-cell title="球队设置" bind:click="toSetTeam">
+        <van-icon class-prefix="iconfont" name="setTeam" slot="icon" />
+      </van-cell>
+      <van-cell title="入队申请">
+        <van-icon class-prefix="iconfont" name="teamJoin" slot="icon" />
+      </van-cell>
+      <van-cell title="创建活动" center bind:click="toCreateTeam">
+        <van-icon class-prefix="iconfont" name="createActi" slot="icon" />
+      </van-cell>
+      <van-cell title="球员动态">
+        <van-icon class-prefix="iconfont" name="playerInfo" slot="icon" />
+      </van-cell>
+    </view>
+  </view>
+  <view class="player_show_container">
+    <van-cell title="个人管理">
+      <van-icon class-prefix="iconfont" name="teamPerson" slot="icon" />
+    </van-cell>
+    <view class="player_data">
+      <van-cell title="个人发布">
+        <van-icon class-prefix="iconfont" name="playerChanel" slot="icon" />
+      </van-cell>
+      <van-cell title="球队留言">
+        <van-icon class-prefix="iconfont" name="teamMessage" slot="icon" />
+      </van-cell>
+      <van-cell title="撤销加入" center bind:click="joinDelete">
+        <van-icon class-prefix="iconfont" name="cancelJoin" slot="icon" />
+      </van-cell>
+      <van-cell title="退出球队" bind:click="quitTeam">
+        <van-icon class-prefix="iconfont" name="quitTeam" slot="icon" />
+      </van-cell>
+    </view>
+  </view>
+  <van-tabbar active="{{ active }}" bind:change="onChange">
+    <van-tabbar-item name="toHome">
+      <van-icon class-prefix="iconfont" name="backToHomeTabbar" slot="icon" size="2em" />
+      回到首页
+    </van-tabbar-item>
+    <van-tabbar-item name="toActivity" dot>
+      <van-icon class-prefix="iconfont" name="createActiTabbar" slot="icon" size="2em" />
+      发布赛事
+    </van-tabbar-item>
+    <van-tabbar-item name="toUser">
+      <van-icon class-prefix="iconfont" name="goToUserTabbar" slot="icon" size="2em" />
+      个人中心
+    </van-tabbar-item>
+  </van-tabbar>
+</view>

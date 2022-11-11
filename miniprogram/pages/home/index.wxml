@@ -1,0 +1,46 @@
+<!-- 头部搜索栏 、头像 -->
+<view class='head_wrap'>
+  <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.userPic}}" />
+  <view class="vant_search">
+    <van-search value="{{ value }}" placeholder="请输入搜索的球队关键词（暂未开发）" background='pink' use-action-slot>
+      <view class="vant_text" slot="action" bind:tap="onClick">搜索</view>
+    </van-search>
+  </view>
+</view>
+<!-- 轮播图 -->
+<view class="swiper_wrap">
+  <swiper indicator-dots autoplay circular>
+    <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+      <image src="{{item.image_src}}" mode="widthFix"></image>
+    </swiper-item>
+  </swiper>
+</view>
+<view>
+  <van-notice-bar background="#fffbe8" scrollable left-icon="volume-o" text="技术是开发它的人的共同灵魂。" />
+</view>
+<!-- 组件按钮 -->
+<view class="vant_btn">
+  <van-button plain type="primary" round bindtap="createTeam">我要组队</van-button>
+  <van-toast id="van-toast" />
+  <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.userPic}}" />
+  <van-button plain type="info" round bindtap="toTeamCenter">球队管理</van-button>
+  <van-toast id="van-toast" />
+</view>
+<!-- tab标签 -->
+<view class="vant_tabs">
+  <van-tabs active="{{ active }}" bind:change="onChange" type="line">
+    <van-tab title="活动列表">
+      <view class="activity_wrap" wx:for="{{activityList}}" wx:key="id">
+        <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.avatarUrl}}" />
+        <view class="activity_wrap_data">
+          <view class="">{{item.acti_date}}</view>
+          <view class="">{{item.acti_name}}</view>
+          <view class="">{{item.acti_region}}</view>
+        </view>
+        <van-button plain type="primary" round>报名中</van-button>
+      </view>
+    </van-tab>
+    <van-tab title="球队列表">内容 2</van-tab>
+    <van-tab title="球场推荐">内容 3</van-tab>
+  </van-tabs>
+</view>

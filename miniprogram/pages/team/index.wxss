@@ -1,0 +1,40 @@
+.search_wrap {
+  width: 100%;
+  height: 60rpx;
+}
+.team_title {
+  background-color: #1989fa;
+  color: black;
+}
+.teaminfo_wrap {
+  border-bottom: #1989fa 1rpx solid;
+  margin-top: 10rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.teaminfo_wrap .vant_img {
+  flex: 1;
+  flex-basis: 20%;
+  padding-top: 9rpx;
+  padding-left: 30rpx;
+}
+.teaminfo_wrap .team_data {
+  text-align: center;
+  flex: 3;
+}
+.teaminfo_wrap .team_data .team_name text {
+  color: #9c27b0;
+}
+.teaminfo_wrap .team_data .team_des {
+  font-size: 28rpx;
+}
+.teaminfo_wrap .team_data .team_des text {
+  color: #009688;
+}
+.teaminfo_wrap .team_join {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 3;
+}

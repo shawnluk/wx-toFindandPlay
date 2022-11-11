@@ -1,0 +1,44 @@
+.team_players_container .team_players {
+  width: 100vw;
+}
+.team_players_container .team_players .van-cell {
+  width: 100vw;
+  height: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1rpx dotted gray;
+  border-top: 1rpx dotted gray;
+  border-bottom: 1rpx dotted gray;
+}
+.team_players_container .team_players .team_captain {
+  width: 100%;
+}
+.team_players_container .team_players .team_captain .user_wrap {
+  display: flex;
+  height: 50px;
+  border-bottom: 1rpx dotted gray;
+}
+.team_players_container .team_players .team_captain .user_wrap .username {
+  height: 100%;
+  padding-left: 20rpx;
+  flex: 3;
+  line-height: 100rpx;
+}
+.team_players_container .team_players .team_captain .user_wrap .userPic {
+  flex: 1;
+}
+.team_players_container .team_players .team_member .user_wrap {
+  height: 50px;
+  border-bottom: 1rpx dotted gray;
+  display: flex;
+}
+.team_players_container .team_players .team_member .user_wrap .userPic {
+  flex: 1;
+}
+.team_players_container .team_players .team_member .user_wrap .username {
+  height: 100%;
+  padding-left: 20rpx;
+  flex: 3;
+  line-height: 100rpx;
+}

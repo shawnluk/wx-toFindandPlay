@@ -1,0 +1,92 @@
+@font-face {
+  font-family: 'iconfont';  /* Project id 2621488 */
+  src: 
+       url('//at.alicdn.com/t/c/font_2621488_n961s2gh4x.woff2?t=1667888565064') format('woff2'),
+       url('//at.alicdn.com/t/c/font_2621488_n961s2gh4x.woff?t=1667888565064') format('woff'),
+       url('//at.alicdn.com/t/c/font_2621488_n961s2gh4x.ttf?t=1667888565064') format('truetype');
+}
+
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.iconfont-activity:before {
+  content: "\e693";
+}
+
+
+.iconfont-players:before{
+  content: "\e698";
+}
+
+.iconfont-createActi:before{
+  content: "\e611";
+}
+
+.iconfont-quitTeam:before{
+  content: "\ec63";
+}
+
+.iconfont-setTeam:before{
+  content: "\e625";
+}
+
+.iconfont-cancelJoin:before{
+  content: "\e60d";
+}
+
+.iconfont-teamManage:before{
+  content: "\e603";
+}
+
+.iconfont-teamData:before{
+  content: "\e954";
+}
+
+.iconfont-teamPerson:before{
+  content: "\e8af";
+}
+
+.iconfont-teamHistory:before{
+  content: "\e657";
+}
+
+.iconfont-playerData:before{
+  content: "\e674";
+}
+
+.iconfont-teamJoin:before{
+  content: "\e61c";
+}
+
+.iconfont-playerInfo:before{
+  content: "\e606";
+}
+
+.iconfont-playerChanel:before{
+  content: "\e612";
+}
+
+.iconfont-teamMessage:before{
+  content: "\e680";
+}
+
+.iconfont-createActiTabbar:before{
+  content: "\e604";
+}
+
+
+.iconfont-backToHomeTabbar:before{
+  content: "\e60b";
+}
+
+.iconfont-goToUserTabbar:before{
+  content: "\e613";
+}

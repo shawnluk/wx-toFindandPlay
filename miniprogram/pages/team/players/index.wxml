@@ -1,0 +1,38 @@
+<!-- pages/team/players/index.wxml -->
+<!-- <text>pages/team/players/index.wxml</text> -->
+<view class="team_players_container">
+  <van-cell title="队伍大名单" />
+  <view class="team_players">
+    <!-- <view class="team_captain"> -->
+    <van-cell title="队长：" />
+    <!-- <van-cell title="数据排行" /> -->
+    <view class="team_captain">
+      <view class="user_wrap">
+        <van-image class="userPic" round width="100rpx" height="100rpx" src="{{userinfo.userPic}}" />
+        <view class="username">{{teaminfo.newCaptain}}</view>
+      </view>
+    </view>
+    <van-cell title="队员：" />
+    <view class="team_member">
+      <view class="user_wrap" wx:for="{{teamMemberList}}" wx:key="userID">
+        <van-image class="userPic" round width="100rpx" height="100rpx" src="{{userinfo.userPic}}" />
+        <view class="username">{{item.username}}</view>
+      </view>
+      <!-- <view class="user_wrap">
+        <van-image class="userPic" round width="100rpx" height="100rpx" src="{{userinfo.userPic}}" />
+        <view class="username">{{userinfo.username}}</view>
+      </view> -->
+    </view>
+    <van-cell title="申请加入中：" />
+    <view class="team_captain" wx:for="{{joinTeam_memberList}}" wx:key="userID">
+      <view class="user_wrap">
+        <van-image class="userPic" round width="100rpx" height="100rpx" src="{{userinfo.userPic}}" />
+        <view class="username">{{item.username}}</view>
+      </view>
+    </view>
+    <!-- </view> -->
+    <!-- <van-cell title="球队赛程" />
+    <van-cell title="球员信息" link-type="navigateTo" url="/pages/team/players/index" />
+    <van-cell title="数据排行" /> -->
+  </view>
+</view>

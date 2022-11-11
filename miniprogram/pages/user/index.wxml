@@ -1,0 +1,39 @@
+<view id="user_wrap">
+  <van-dialog id="van-dialog" />
+  <!-- 头部用户信息 -->
+  <view class="user_avatar_wrap">
+    <van-image class="user_avatar" round width="120rpx" height="120rpx" src="{{userinfo.userPic}}" webp="true" />
+    <van-button type="primary" round size="small" wx:if="{{loginShow}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+      立即登录
+    </van-button>
+    <text wx:else>{{userinfo.username}}</text>
+  </view>
+  <!-- 数据展示 -->
+  <view class="my_data">
+    <text>我的本年度数据</text>
+    <van-grid>
+      <van-grid-item icon="photo-o" text="进球" />
+      <van-grid-item icon="photo-o" text="助攻" />
+      <van-grid-item icon="photo-o" text="比赛场次" />
+      <van-grid-item icon="photo-o" text="文字" />
+    </van-grid>
+  </view>
+  <!-- 信息展示 -->
+  <view class="my_info_wrap">
+    <van-cell inset="true" is-link title="我的信息" link-type="navigateTo" url="/pages/user/center/index" />
+    <van-cell inset="true" is-link title="我的球队" label="{{teaminfo.joinStatus === 1 ? teaminfo.teamName+'=>等待申请通过' :teaminfo.teamName}}" link-type="navigateTo" url="/pages/team/center/index" />
+    <van-cell inset="true" is-link title="赛事活动" link-type="switchTab" url="/pages/activity/index" />
+  </view>
+  <!-- <van-cell-group title="服务信息"> -->
+  <van-cell title="个人资料" value="修改" is-link link-type="navigateTo" url="/pages/user/setUserData/index" />
+  <van-cell title="意见反馈" value="内容" />
+  <van-cell title="分享应用" value="内容" />
+  <van-cell title="联系客服" value="内容" />
+  <van-cell title="赞赏作者" value="内容" />
+  <view class="logoutBtn_wrap">
+    <van-button class="logout_btn" type="primary" round size="small" bind:click='logout' wx:if="{{logoutShow}}">
+      退出登录
+    </van-button>
+  </view>
+  <!-- </van-cell-group> -->
+</view>

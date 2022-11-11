@@ -1,0 +1,56 @@
+<!-- <van-toast id="van-toast" /> -->
+<van-dialog id="van-dialog" />
+<van-search class="search_wrap" value="{{ fetchValue }}" placeholder="请输入你想加入的球队名称" bind:change="onChange" />
+<!-- <input type="text" > -->
+<view class="fetchTeam_wrap" wx:if="{{fetchTeam.length > 0}}" role="listbox">
+  <button class="fetchTeamList" wx:for="{{fetchTeam}}" wx:key="item" role="option" bindtap='getFetchTeam' data-text="{{item}}">
+    {{item}}
+  </button>
+</view>
+<view class="teamlist_wrap" wx:if="{{!fetchTrue}}">
+  <view class="team_title">
+    <van-sticky>
+      <van-button type="info">所有球队俱乐部</van-button>
+    </van-sticky>
+  </view>
+  <view class="teaminfo_wrap" wx:for="{{teamList}}" wx:key="id">
+    <view class="team_img">
+      <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{item.teamPic}}" />
+    </view>
+    <view class="team_data">
+      <view class="team_name">
+        <text>{{item.teamName}}</text>
+      </view>
+      <view class="team_des">
+        <text>现任队长：{{item.newCaptain}}</text>
+      </view>
+    </view>
+    <view class="team_join">
+      <van-button plain type="primary" round size="small">查看信息</van-button>
+      <van-button plain type="primary" round size="small" bind:click="joinTeam" data-detail="{{item}}">
+        申请加入
+      </van-button>
+    </view>
+  </view>
+</view>
+<view class="fetchSelect_wrap" wx:if="{{fetchSelect.length > 0}}">
+  <view class="teaminfo_wrap" wx:for="{{fetchSelect}}" wx:key="id">
+    <view class="team_img">
+      <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{item.teamPic}}" />
+    </view>
+    <view class="team_data">
+      <view class="team_name">
+        <text>{{item.teamName}}</text>
+      </view>
+      <view class="team_des">
+        <text>{{item.newCaptain}}</text>
+      </view>
+    </view>
+    <view class="team_join">
+      <van-button plain type="primary" round size="small">查看信息</van-button>
+      <van-button plain type="primary" round size="small" bind:click="joinTeam" data-detail="{{item}}">
+        申请加入
+      </van-button>
+    </view>
+  </view>
+</view>

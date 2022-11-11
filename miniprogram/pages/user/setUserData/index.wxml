@@ -1,0 +1,25 @@
+<view data-weui-theme="{{theme}}">
+  <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+    <image class="avatar" src="{{avatarUrl ==='' ? userinfo.userPic : avatarUrl}}"></image>
+  </button>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <mp-cells>
+      <mp-cell title="原昵称">
+        <input type="nickname" class="weui-input" placeholder="{{userinfo.username}}" disabled="disabled" />
+      </mp-cell>
+      <mp-cell title="新昵称">
+        <input type="nickname" name="username" class="weui-input" placeholder="请输入昵称" />
+      </mp-cell>
+      <mp-cell title="新邮箱">
+        <input type="email" name="email" class="weui-input" placeholder="请输入您的新邮箱" value="{{userinfo.email}}" />
+      </mp-cell>
+    </mp-cells>
+    <view class="btn-area">
+      <!-- <button formType="submit">创建球队</button> -->
+      <van-button bind:click='uploadPic' type="primary" size="large" round>仅提交头像修改</van-button>
+      <van-button formType="submit" type="primary" size="large" round>提交修改</van-button>
+      <van-button type="primary" size="large" round formType="reset">重置信息</van-button>
+      <!-- <button formType="reset">重置信息</button> -->
+    </view>
+  </form>
+</view>

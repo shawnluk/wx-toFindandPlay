@@ -1,0 +1,16 @@
+.activity_wrap {
+  margin-top: 10rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1rpx solid black;
+}
+.activity_wrap .activity_wrap_data {
+  font-size: 28rpx;
+  text-align: center;
+}
+.activity_wrap .vant_img {
+  flex-basis: 20%;
+  padding-top: 9rpx;
+  padding-left: 30rpx;
+}

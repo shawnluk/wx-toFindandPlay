@@ -1,0 +1,37 @@
+<!-- pages/teamOption/create/index.wxml -->
+<!-- <text>pages/teamOption/create/index.wxml</text> -->
+<view>
+  <view class="form_title">
+    <van-sticky>
+      <van-button type="info">快来创建属于你的球队吧！</van-button>
+    </van-sticky>
+  </view>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="section">
+      <view class="section__title">
+        <text>球队名称</text>
+      </view>
+      <input name="teamName" placeholder="请填写你要创建的球队名" />
+    </view>
+    <view class="section">
+      <view class="section__title">球队口号</view>
+      <input name="teamSlogan" placeholder="请填写你的球队口号" />
+    </view>
+    <view class="section">
+      <view class="section__title">球队头像</view>
+      <!-- <input name="input" placeholder="please input here"> -->
+      <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" max-count="1" bind:delete="DelPic" />
+      <!-- </input> -->
+    </view>
+    <view class="section">
+      <view class="section__title">球队描述</view>
+      <input name="teamDesc" placeholder="请输入你的球队描述" />
+    </view>
+    <view class="btn-area">
+      <!-- <button formType="submit">创建球队</button> -->
+      <van-button formType="submit" type="primary" size="large" round>创建球队</van-button>
+      <van-button type="primary" size="large" round formType="reset">重置信息</van-button>
+      <!-- <button formType="reset">重置信息</button> -->
+    </view>
+  </form>
+</view>

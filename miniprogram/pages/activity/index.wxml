@@ -1,0 +1,18 @@
+<!-- pages/activity/index.wxml -->
+<!-- <text>pages/activity/index.wxml</text> -->
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title="足球">
+    <view class="activity_wrap" wx:for="{{activityList}}" wx:key="id">
+      <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.avatarUrl}}" />
+      <view class="activity_wrap_data">
+        <view class="">{{item.acti_date}}</view>
+        <view class="">{{item.acti_name}}</view>
+        <view class="">{{item.acti_region}}</view>
+      </view>
+      <van-button plain type="primary" round>报名中</van-button>
+    </view>
+  </van-tab>
+  <van-tab title="篮球">篮球</van-tab>
+  <van-tab title="羽毛球">羽毛球</van-tab>
+  <van-tab title="飞盘">飞盘</van-tab>
+</van-tabs>

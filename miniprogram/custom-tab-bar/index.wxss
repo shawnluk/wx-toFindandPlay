@@ -1,0 +1,4 @@
+/* custom-tab-bar/index.wxss */
+/* .tabbar_wrap{
+  padding-bottom:calc(100rpx + env(safe-area-inset-bottom))
+} */
