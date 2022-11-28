@@ -80,15 +80,15 @@
   </view>
   <van-tabbar active="{{ active }}" bind:change="onChange">
     <van-tabbar-item name="toHome">
-      <van-icon class-prefix="iconfont" name="backToHomeTabbar" slot="icon" size="2em" />
+      <van-icon class-prefix="iconfont" name="backToHomeTabbar" slot="icon" size="1.5em" />
       回到首页
     </van-tabbar-item>
     <van-tabbar-item name="toActivity" dot>
-      <van-icon class-prefix="iconfont" name="createActiTabbar" slot="icon" size="2em" />
+      <van-icon class-prefix="iconfont" name="createActiTabbar" slot="icon" size="1.5em" />
       发布赛事
     </van-tabbar-item>
     <van-tabbar-item name="toUser">
-      <van-icon class-prefix="iconfont" name="goToUserTabbar" slot="icon" size="2em" />
+      <van-icon class-prefix="iconfont" name="goToUserTabbar" slot="icon" size="1.5em" />
       个人中心
     </van-tabbar-item>
   </van-tabbar>

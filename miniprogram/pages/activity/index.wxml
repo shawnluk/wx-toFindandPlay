@@ -2,17 +2,71 @@
 <!-- <text>pages/activity/index.wxml</text> -->
 <van-tabs active="{{ active }}" bind:change="onChange">
   <van-tab title="足球">
-    <view class="activity_wrap" wx:for="{{activityList}}" wx:key="id">
-      <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.avatarUrl}}" />
-      <view class="activity_wrap_data">
-        <view class="">{{item.acti_date}}</view>
-        <view class="">{{item.acti_name}}</view>
-        <view class="">{{item.acti_region}}</view>
+    <van-dropdown-menu>
+      <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+      <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="selectItem" />
+    </van-dropdown-menu>
+    <view class="activity_wrap" wx:for="{{activityList}}" wx:key="id" wx:if="{{acti_0}}">
+      <view class="img_wrap">
+        <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.avatarUrl}}" />
       </view>
-      <van-button plain type="primary" round>报名中</van-button>
+      <view class="activity_wrap_data">
+        <view>{{item.acti_date}}</view>
+        <view class="activity_name">
+          <text>{{item.acti_name}}</text>
+          ·
+          <text>{{item.acti_region}}</text>
+        </view>
+        <view class="activity_time">
+          <van-count-down time="{{  item.acti_utc - time  }}" format="DD 天 HH 时 mm 分 ss 秒" />
+        </view>
+      </view>
+      <view class="btn_wrap">
+        <van-button plain type="primary" round wx:if="{{item.acti_utc - time>0}}">报名中</van-button>
+        <van-button plain type="default" round wx:else disabled>已结束</van-button>
+      </view>
+    </view>
+    <view class="activity_wrap" wx:for="{{activityList_1}}" wx:key="id" wx:if="{{acti_1}}">
+      <view class="img_wrap">
+        <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.avatarUrl}}" />
+      </view>
+      <view class="activity_wrap_data">
+        <view>{{item.acti_date}}</view>
+        <view class="activity_name">
+          <text>{{item.acti_name}}</text>
+          ·
+          <text>{{item.acti_region}}</text>
+        </view>
+        <view class="activity_time">
+          <van-count-down time="{{  item.acti_utc - time  }}" format="DD 天 HH 时 mm 分 ss 秒" />
+        </view>
+      </view>
+      <view class="btn_wrap">
+        <van-button plain type="primary" round>报名中</van-button>
+      </view>
+    </view>
+    <view class="activity_wrap" wx:for="{{activityList_2}}" wx:key="id" wx:if="{{acti_2}}">
+      <view class="img_wrap">
+        <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.avatarUrl}}" />
+      </view>
+      <view class="activity_wrap_data">
+        <view>{{item.acti_date}}</view>
+        <view class="activity_name">
+          <text>{{item.acti_name}}</text>
+          ·
+          <text>{{item.acti_region}}</text>
+        </view>
+        <view class="activity_time">
+          <van-count-down time="{{  item.acti_utc - time  }}" format="DD 天 HH 时 mm 分 ss 秒" />
+        </view>
+      </view>
+      <view class="btn_wrap">
+        <van-button plain type="default" round disabled>已结束</van-button>
+      </view>
     </view>
   </van-tab>
   <van-tab title="篮球">篮球</van-tab>
   <van-tab title="羽毛球">羽毛球</van-tab>
   <van-tab title="飞盘">飞盘</van-tab>
 </van-tabs>
+<view style="padding-bottom:50px"></view>

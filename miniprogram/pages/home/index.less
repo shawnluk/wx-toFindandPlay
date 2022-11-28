@@ -1,3 +1,4 @@
+
 .head_wrap{
   // height: 108rpx;
   width: 100%;
@@ -36,31 +37,71 @@
 }
 
 .vant_btn{
+  width: 100%;
   display: flex;
   margin-top: 20rpx;
   justify-content: space-around;
 }
 
 .vant_tabs{
+  .loading{
+    margin-top: 10rpx;
+    // margin-bottom: 20rpx;
+    // height: 100rpx;
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+  }
+  // height: 326px;
   .van-tabs__wrap{
-    border-top: 1rpx solid pink;
-    border-bottom: 1rpx solid pink;
+    // border-top: 1rpx solid pink;
+    // border-bottom: 1rpx solid pink;
   }
   .van-ellipsis{
-    border-right: 1rpx solid pink;
+    // border-right: 1rpx solid pink;
+  }
+  .activity_wrap{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1rpx solid black;
+    .activity_wrap_data{
+      margin-top: 10rpx;
+      flex-basis: 60%;
+      font-size: 28rpx;
+      text-align: center;
+      .activity_name{
+    
+        font-size: 22rpx;
+        text:nth-child(1){
+          color: red;
+        }
+        text:nth-child(2){
+          color: orange;
+        }
+      }
+    }
+    .btn_wrap{
+      // height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .van-button{
+        flex-basis: 30%;
+        // padding-top: 9rpx;
+        display: flex;
+      }
+    }
+    .img_wrap{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .vant_img{
+        flex-basis: 10%;
+        padding-top: 9rpx;
+        // padding-left: 30rpx;
+      }
+    }
   }
 }
 
-.activity_wrap{
-  margin-top: 10rpx;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  border-bottom: 1rpx solid black;
-  .activity_wrap_data{
-    // height: 90rpx;
-    // display: flex;
-    font-size: 28rpx;
-    text-align: center;
-  }
-}

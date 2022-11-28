@@ -1,7 +1,7 @@
 // app.js
 import { checkSession } from './utils/wxCheckSession'
 import { wxRequest, teamAPI, userAPI } from './utils/wxRequest'
-
+import io from './utils/weapp.socket.io.js'
 
 App({
   onLaunch: function () {
@@ -18,7 +18,34 @@ App({
       });
     }
 
+
+
+
     this.globalData = {};
+
+    // const socket = io('http://localhost:3000', {
+    //   autoConnect: false
+    // })
+    // socket.on('wx', socketID => {
+    //   console.log(socketID)
+    // })
+
+    // wx.connectSocket({
+    //   url: 'wss://localhost:3000',
+    //   header: {
+    //     'content-type': 'application/json'
+    //   },
+    //   success: () => {
+    //     console.log('connectSocket成功');
+    //   },
+    //   fail: () => {
+    //     console.log('失败');
+    //   }
+    // })
+
+
+
+
 
     // checkSession().then(response => {
     //   if (response === 0) {

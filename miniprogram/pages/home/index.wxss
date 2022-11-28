@@ -28,25 +28,52 @@
   width: 100%;
 }
 .vant_btn {
+  width: 100%;
   display: flex;
   margin-top: 20rpx;
   justify-content: space-around;
 }
-.vant_tabs .van-tabs__wrap {
-  border-top: 1rpx solid pink;
-  border-bottom: 1rpx solid pink;
-}
-.vant_tabs .van-ellipsis {
-  border-right: 1rpx solid pink;
-}
-.activity_wrap {
+.vant_tabs .loading {
   margin-top: 10rpx;
+  display: flex;
+  justify-content: center;
+}
+.vant_tabs .activity_wrap {
   width: 100%;
   display: flex;
   justify-content: space-around;
   border-bottom: 1rpx solid black;
 }
-.activity_wrap .activity_wrap_data {
+.vant_tabs .activity_wrap .activity_wrap_data {
+  margin-top: 10rpx;
+  flex-basis: 60%;
   font-size: 28rpx;
   text-align: center;
+}
+.vant_tabs .activity_wrap .activity_wrap_data .activity_name {
+  font-size: 22rpx;
+}
+.vant_tabs .activity_wrap .activity_wrap_data .activity_name text:nth-child(1) {
+  color: red;
+}
+.vant_tabs .activity_wrap .activity_wrap_data .activity_name text:nth-child(2) {
+  color: orange;
+}
+.vant_tabs .activity_wrap .btn_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vant_tabs .activity_wrap .btn_wrap .van-button {
+  flex-basis: 30%;
+  display: flex;
+}
+.vant_tabs .activity_wrap .img_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vant_tabs .activity_wrap .img_wrap .vant_img {
+  flex-basis: 10%;
+  padding-top: 9rpx;
 }

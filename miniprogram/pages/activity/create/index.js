@@ -65,6 +65,7 @@ Page({
       desc: this.data.acti_desc,
       resource: this.data.acti_resource,
       date2: this.data.date2,
+      mark: 'wx'
     }
     console.log(data);
     wxRequest(activityAPI.createAct, 'post', data).then(res => {

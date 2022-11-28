@@ -3,13 +3,13 @@ page {
   width: 100vw;
 }
 #van-dialog {
-  height: 200px;
+  height: 400rpx;
 }
 #van-dialog .dropdown {
-  height: 200px;
+  height: 400rpx;
 }
 #van-dialog .dropdown .dropdown_menu .van-dropdown-item .van-dropdown-item--down {
-  top: 100px !important;
+  top: 200rpx !important;
 }
 .team_title_container {
   margin-bottom: 2vh;
@@ -42,6 +42,7 @@ page {
   border-bottom: 1rpx dotted gray;
   padding-left: 16rpx;
   padding-right: 16rpx;
+  font-size: 24rpx;
 }
 .team_manage_container {
   margin-top: 2vh;
@@ -61,6 +62,7 @@ page {
   border-bottom: 1rpx dotted gray;
   padding-left: 16rpx;
   padding-right: 16rpx;
+  font-size: 24rpx;
 }
 .player_show_container {
   margin-top: 2vh;
@@ -80,6 +82,7 @@ page {
   border-bottom: 1rpx dotted gray;
   padding-left: 16rpx;
   padding-right: 16rpx;
+  font-size: 24rpx;
 }
 .van-tabbar {
   height: 10vh !important;

@@ -1,0 +1,19 @@
+<!-- pages/user/userNews/index.wxml -->
+<!-- <text>pages/user/userNews/index.wxml</text> -->
+<view>我的短消息</view>
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title="球队加入申请">
+    <view class='teamJoin_wrap' wx:for="{{joinNewsData}}" wx:key="fromUserID">
+      <van-cell title="{{item.fromUser}}" class="teamJoin_content" center border="false" value="申请加入" />
+      <van-button type="primary" data-fromUser="{{item.fromUser}}" data-fromUserID="{{item.fromUserID}}" data-MsgID="{{item._id}}" size="small" bind:click="agreeTeamJoin">
+        同意
+      </van-button>
+      <van-button type="warning" data-fromUser="{{item.fromUser}}" data-fromUserID="{{item.fromUserID}}" size="small" bind:click="refuseTeamJoin">
+        拒绝
+      </van-button>
+    </view>
+  </van-tab>
+  <van-tab title="球队内部通知">球队内部通知</van-tab>
+  <van-tab title="活动通知">活动通知</van-tab>
+  <van-tab title="我的消息">我的消息</van-tab>
+</van-tabs>

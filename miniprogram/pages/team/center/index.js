@@ -3,6 +3,7 @@ import { checkSession } from '../../../utils/wxCheckSession'
 import { userAPI, activityAPI, teamAPI, wxRequest } from '../../../utils/wxRequest'
 import Toast from '@vant/weapp/toast/toast'
 import Dialog from '@vant/weapp/dialog/dialog';
+import { connectServer, wxSocket } from '../../../utils/socketio'
 
 Page({
 
@@ -26,6 +27,12 @@ Page({
       wxRequest(teamAPI.deleteTeamJoin, 'post').then(result => {
         console.log(result)
         if (result.status === 200) {
+          connectServer()
+          const captainObj = {
+            CaptainID: wx.getStorageSync('teaminfo').CaptainID,
+            newCaptain: wx.getStorageSync('teaminfo').newCaptain
+          }
+          wxSocket.emit('deleteJoinTeam', captainObj)
           wx.setStorage({
             key: 'teaminfo',
             data: {},
@@ -42,14 +49,14 @@ Page({
     Toast.fail('您还未申请加入任何球队')
   },
 
-  /* 点击去往球队创建赛事页面 */
+  /* 点击去往球队创建页面 */
   toCreateTeam () {
     if (this.data.teaminfo.CaptainID !== this.data.userinfo.id) {
       Toast.fail('您不是球队队长')
       return
     }
     wx.navigateTo({
-      url: '/pages/team/create/index',
+      url: '/pages/activity/create/index',
     });
   },
 

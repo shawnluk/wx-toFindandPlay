@@ -13,9 +13,27 @@ Page({
     userinfo: {},
     teaminfo: {},
     activityList: [],
-    value: ''
+    value: '',
+    noticeText: '',
+    time: new Date().getTime(),
+    loading: false
   },
-
+  compareItem (item1, item2) {
+    if (item1.acti_utc > item2.acti_utc) {
+      return -1
+    } else if (item1.acti_utc < item2.acti_utc) {
+      return 1
+    } else {
+      return 0
+    }
+  },
+  arrSlice (arr, N) {
+    let arrResult = []
+    for (let i = 0; i < arr.length; i += N) {
+      arrResult.push(arr.slice(i, i + N))
+    }
+    return arrResult
+  },
   /* 点击前往创建球队活动页面 */
   createTeam () {
     if (this.data.teaminfo.id) {
@@ -50,7 +68,22 @@ Page({
       },
     });
   },
-
+  replay () {
+    if (this.data.activityList.length > 1) {
+      setTimeout(this.getNoticeText(this.data.activityList), 1000)
+    }
+  },
+  getNoticeText (arr) {
+    const textArr = arr.map((item) => {
+      return {
+        acti_name: item.acti_name,
+        acti_date: item.acti_date
+      }
+    })
+    const { acti_name, acti_date } = textArr[Math.floor(Math.random() * textArr.length)]
+    const noticeText = acti_name + '\xa0:\xa0' + acti_date
+    return noticeText
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -84,12 +117,24 @@ Page({
     wxRequest(activityAPI.getActivity, 'get').then(res => {
       console.log(res);
       if (res.status === 200) {
-        this.setData({
-          activityList: res.ActiData
-        })
+        if (res.ActiData.length === 0) {
+          this.setData({
+            noticeText: '暂无最新活动'
+          })
+        }
+        if (res.ActiData.length > 0) {
+          const actiPage = this.arrSlice(res.ActiData.filter(item => item.acti_utc - new Date().getTime() > 0).sort(this.compareItem), 3)
+          this.setData({
+            // activityList: res.ActiData.sort(this.compareItem),
+            actiPage,
+            acti_page: actiPage[0],
+            pageNum: 1,
+            pageTotal: actiPage.length,
+            noticeText: this.getNoticeText(res.ActiData.filter(item => item.acti_utc - new Date().getTime() > 0))
+          })
+        }
       }
     })
-
   },
 
   /**
@@ -117,7 +162,24 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom () {
-
+    // console.log('触底');
+    if (this.data.pageNum >= this.data.pageTotal) {
+      wx.showToast({
+        title: '没有下一页了'
+      })
+      return
+    }
+    const that = this
+    this.setData({
+      loading: true
+    })
+    setTimeout(() => {
+      that.setData({
+        loading: false,
+        acti_page: [...this.data.acti_page, ...this.data.actiPage[this.data.pageNum]]
+      })
+      that.data.pageNum += 1
+    }, 2000)
   },
 
   /**

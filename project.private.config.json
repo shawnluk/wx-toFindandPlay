@@ -1,6 +1,6 @@
 {
   "setting": {
-    "compileHotReLoad": false,
+    "compileHotReLoad": true,
     "urlCheck": false
   },
   "condition": {
@@ -58,6 +58,20 @@
         {
           "name": "球队资料修改",
           "pathName": "pages/team/setTeamData/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/user/userNews/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/activity/index",
           "query": "",
           "launchMode": "default",
           "scene": null

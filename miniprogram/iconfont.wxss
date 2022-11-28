@@ -1,20 +1,20 @@
 @font-face {
   font-family: 'iconfont';  /* Project id 2621488 */
   src: 
-       url('//at.alicdn.com/t/c/font_2621488_n961s2gh4x.woff2?t=1667888565064') format('woff2'),
-       url('//at.alicdn.com/t/c/font_2621488_n961s2gh4x.woff?t=1667888565064') format('woff'),
-       url('//at.alicdn.com/t/c/font_2621488_n961s2gh4x.ttf?t=1667888565064') format('truetype');
+       url('//at.alicdn.com/t/c/font_2621488_ksc6pw7nf3h.woff2?t=1669283737489') format('woff2'),
+       url('//at.alicdn.com/t/c/font_2621488_ksc6pw7nf3h.woff?t=1669283737489') format('woff'),
+       url('//at.alicdn.com/t/c/font_2621488_ksc6pw7nf3h.ttf?t=1669283737489') format('truetype');
 }
 
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 16px;
+  font-size: 32rpx;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-right: 10rpx;
+  padding-left: 10rpx;
 }
 
 .iconfont-activity:before {
@@ -90,3 +90,30 @@
 .iconfont-goToUserTabbar:before{
   content: "\e613";
 }
+
+.iconfont-feedback:before{
+  content: "\e626";
+  font-size: 40rpx;
+}
+
+.iconfont-shareApp:before{
+  content: "\eca6";
+  font-size: 40rpx;
+}
+
+.iconfont-services:before{
+  content: "\f809";
+  font-size: 40rpx;
+}
+
+.iconfont-toAuthor:before{
+  content: "\e614";
+  font-size: 40rpx;
+}
+
+.iconfont-myMsg:before{
+  content: "\e63e";
+  font-size: 40rpx;
+}
+
+/* .van-icon{text-rendering:auto;-webkit-font-smoothing:antialiased;font:normal normal normal 14px/1 vant-icon;font-size:inherit;position:relative}.van-icon,.van-icon:before{display:inline-block} */

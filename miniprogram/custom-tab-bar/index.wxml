@@ -1,4 +1,4 @@
-<van-tabbar active="{{ selected }}" bind:change="onChange" class="tabbar_wrap">
+<van-tabbar active="{{ selected }}" bind:change="onChange" class="tabbar_wrap" fixed="false">
   <van-tabbar-item wx:for="{{ list }}" wx:key="index" icon="{{ item.icon }}">
     {{item.text}}
   </van-tabbar-item>

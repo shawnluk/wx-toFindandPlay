@@ -1,6 +1,9 @@
 // pages/team/index.js
 import { userAPI, teamAPI, wxRequest } from '../../utils/wxRequest'
 import Dialog from '@vant/weapp/dialog/dialog';
+import { wxSocket, connectServer } from '../../utils/socketio'
+
+
 Page({
 
   /**
@@ -48,6 +51,13 @@ Page({
         confirmColor: '#3CC51F',
         success: function () {
           if (result.status === 200) {
+            ///* 发起socket io 通知队长 */
+            connectServer()
+            const captainObj = {
+              CaptainID: e.currentTarget.dataset.detail.CaptainID,
+              newCaptain: e.currentTarget.dataset.detail.newCaptain
+            }
+            wxSocket.emit('JoinTeam', captainObj)
             wxRequest(teamAPI.getTeamJoinStatus, 'post').then(results => {
               if (results.status === 200) {
                 wx.setStorage({
@@ -56,7 +66,7 @@ Page({
                 })
               }
               Dialog.alert({
-                message: '申请加入球队成功',
+                message: '获取申请加入球队信息成功',
               }).then(() => {
                 wx.switchTab({
                   url: '/pages/user/index',

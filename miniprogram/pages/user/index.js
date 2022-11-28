@@ -1,9 +1,11 @@
 // pages/user/index.js
 // const wxRequest = require('../../utils/wxRequest')
 // const app = getApp()
-import { userAPI, activityAPI, teamAPI, wxRequest } from '../../utils/wxRequest'
+import { userAPI, teamAPI, wxRequest } from '../../utils/wxRequest'
 import { checkSession } from '../../utils/wxCheckSession.js'
+import { connectServer, wxSocket } from '../../utils/socketio'
 import Dialog from '@vant/weapp/dialog/dialog'
+
 
 Page({
 
@@ -14,7 +16,8 @@ Page({
     loginShow: true,
     logoutShow: false,
     userinfo: {},
-    teaminfo: {}
+    teaminfo: {},
+    newsCount: 0
   },
   logout () {
     wx.clearStorageSync()
@@ -45,8 +48,12 @@ Page({
 
               /* 获取用户信息 */
               wxRequest(userAPI.getUserInfo).then(userRes => {
+                // 连接socket io
 
                 if (userRes.status === 200) {
+                  // wxSocket.on('wx', socketID => {
+                  //   console.log(socketID);
+                  // })
                   Dialog.alert({
                     message: '获取用户信息成功',
                   }).then(() => {
@@ -54,6 +61,18 @@ Page({
                     wx.setStorage({
                       key: 'userinfo',
                       data: userRes.userData,
+                      success: () => {
+                        connectServer()
+                        wxSocket.on('getJoinMsg', (data) => {
+                          if (data) {
+                            that.setData({
+                              newsCount: data.msg.length,
+                              newsMsg: data.msg
+                            })
+                            console.log(data.msg);
+                          }
+                        })
+                      }
                     })
 
                     that.setData({
@@ -159,6 +178,16 @@ Page({
             teaminfo: wx.getStorageSync('teaminfo')
           })
         }
+        connectServer()
+        wxSocket.on('getJoinMsg', (data) => {
+          if (data) {
+            this.setData({
+              newsCount: data.msg.length,
+              newsMsg: data.msg
+            })
+            console.log(data.msg);
+          }
+        })
       }
     })
   },

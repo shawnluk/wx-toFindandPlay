@@ -49,6 +49,7 @@ navigator {
 page {
     --themeColor: #eb4450;
     /* background-color:rgb(158, 156, 156) */
+    height:100%
 }
 
 image {
