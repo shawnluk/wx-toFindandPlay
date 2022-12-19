@@ -55,6 +55,10 @@ Page({
         // console.log(data);
       }
     })
+
+    this.setData({
+      JoinActiData: wx.getStorageSync('actiJoinUser') ? wx.getStorageSync('actiJoinUser') : []
+    })
   },
 
   /**

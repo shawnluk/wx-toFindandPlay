@@ -14,6 +14,16 @@
     </view>
   </van-tab>
   <van-tab title="球队内部通知">球队内部通知</van-tab>
-  <van-tab title="活动通知">活动通知</van-tab>
+  <van-tab title="活动参加申请通知">
+    <view class='teamJoin_wrap' wx:for="{{JoinActiData}}" wx:key="id">
+      <van-cell title="用户{{item.userID}}" class="teamJoin_content" center border="false" value="申请参加活动{{item.actiID}}" />
+      <van-button type="primary" data-userID="{{item.userID}}" data-actiID="{{item.actiID}}" size="small" bind:click="agreeActiJoin">
+        同意
+      </van-button>
+      <van-button type="warning" data-userID="{{item.userID}}" data-actiID="{{item.actiID}}" size="small" bind:click="refuseActiJoin">
+        拒绝
+      </van-button>
+    </view>
+  </van-tab>
   <van-tab title="我的消息">我的消息</van-tab>
 </van-tabs>

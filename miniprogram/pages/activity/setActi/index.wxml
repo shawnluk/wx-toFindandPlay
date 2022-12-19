@@ -1,0 +1,46 @@
+<!-- pages/activity/setActi/index.wxml -->
+<view>
+  <view class="form_title">
+    <van-sticky>
+      <van-button type="info">修改活动页面！</van-button>
+    </van-sticky>
+  </view>
+  <view class="activity_container" bindsubmit="submit">
+    <van-cell-group>
+      <van-field model:value="{{ acti_name }}" name="acti_name" placeholder="{{selectedActi.acti_name}}" border="{{ false }}" label="活动名称" required clearable />
+      <van-field model:value="{{ acti_region }}" name="acti_region" placeholder="{{selectedActi.acti_region}}" border="{{ false }}" label="比赛地点" required clearable />
+      <van-field model:value="{{ acti_num }}" name="acti_num" placeholder="{{selectedActi.acti_num}}" border="{{ false }}" label="比赛人数" required clearable />
+      <van-field value="{{ dateTime }}" name="date2" placeholder="{{oldDateTime}}" border="{{ false }}" label="活动时间" required clearable readonly use-button-slot>
+        <van-button slot="button" size="small" type="primary" bind:click="showPopup">
+          点击选择时间
+        </van-button>
+      </van-field>
+      <view>
+        <van-field value="{{ acti_type }}" name="acti_type" placeholder="{{selectedActi.acti_type}}" border="{{ false }}" label="比赛性质" required clearable readonly />
+        <van-radio-group value="{{ radio1 }}" bind:change="onRadioChange1" direction="horizontal">
+          <van-radio name="1" label-disabled>友谊赛</van-radio>
+          <van-radio name="2" label-disabled>联赛杯赛</van-radio>
+          <van-radio name="3" label-disabled>自定义比赛</van-radio>
+        </van-radio-group>
+      </view>
+      <view>
+        <van-field value="{{ acti_resource }}" name="acti_resource" placeholder="{{selectedActi.acti_resource}}" border="{{ false }}" label="比赛场地" required clearable readonly />
+        <van-radio-group value="{{ radio2 }}" bind:change="onRadioChange2" direction="horizontal">
+          <van-radio name="a" label-disabled>线上电竞</van-radio>
+          <van-radio name="b" label-disabled>线下租场</van-radio>
+        </van-radio-group>
+      </view>
+      <van-cell-group>
+        <van-field model:value="{{ acti_desc }}" label="活动描述" type="textarea" placeholder="{{selectedActi.acti_desc}}" autosize border="{{ false }}" show-confirm-bar use-button-slot clearable>
+          <!-- <van-button slot="button" size="small" type="primary">发送验证码</van-button> -->
+        </van-field>
+      </van-cell-group>
+    </van-cell-group>
+    <button bindtap="onSubmit">提交修改</button>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose" position="bottom" round>
+    <view class="timePicker">
+      <van-datetime-picker value="{{ currentDate }}" bind:input="onInput" bind:confirm="timeConfirm" bind:cancel="timeCancel" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+    </view>
+  </van-popup>
+</view>

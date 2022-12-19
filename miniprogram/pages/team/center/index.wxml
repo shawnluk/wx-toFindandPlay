@@ -51,10 +51,10 @@
       <van-cell title="入队申请">
         <van-icon class-prefix="iconfont" name="teamJoin" slot="icon" />
       </van-cell>
-      <van-cell title="创建活动" center bind:click="toCreateTeam">
+      <van-cell title="创建活动" bind:click="toCreateActivity">
         <van-icon class-prefix="iconfont" name="createActi" slot="icon" />
       </van-cell>
-      <van-cell title="球员动态">
+      <van-cell title="活动管理" bind:click="toMyActivity">
         <van-icon class-prefix="iconfont" name="playerInfo" slot="icon" />
       </van-cell>
     </view>

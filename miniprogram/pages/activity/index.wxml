@@ -1,5 +1,6 @@
 <!-- pages/activity/index.wxml -->
 <!-- <text>pages/activity/index.wxml</text> -->
+<van-dialog id="van-dialog" />
 <van-tabs active="{{ active }}" bind:change="onChange">
   <van-tab title="足球">
     <van-dropdown-menu>
@@ -7,7 +8,7 @@
       <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="selectItem" />
     </van-dropdown-menu>
     <view class="activity_wrap" wx:for="{{activityList}}" wx:key="id" wx:if="{{acti_0}}">
-      <view class="img_wrap">
+      <!-- <view class="img_wrap">
         <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.avatarUrl}}" />
       </view>
       <view class="activity_wrap_data">
@@ -24,45 +25,86 @@
       <view class="btn_wrap">
         <van-button plain type="primary" round wx:if="{{item.acti_utc - time>0}}">报名中</van-button>
         <van-button plain type="default" round wx:else disabled>已结束</van-button>
-      </view>
+      </view> -->
+      <van-card title="{{item.acti_name}}" thumb="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/10551/userPic/10.jpg?temp=0.02072300877319999">
+        <view slot="desc">
+          <view>地址：{{item.acti_region}}</view>
+        </view>
+        <view slot="desc">
+          <view>日期：{{item.acti_date}}</view>
+        </view>
+        <view slot="footer">
+          <van-button size="small" plain type="primary" round wx:if="{{ item.acti_utc - time > 0 && actiJoinNum - item.acti_num < 0 }}" bind:click="toJoinActi" data-detail="{{item}}">
+            报名中
+          </van-button>
+          <van-button size="small" plain type="primary" round wx:if="{{ item.acti_utc - time > 0 && actiJoinNum - item.acti_num < 0 }}">
+            查看信息
+          </van-button>
+          <van-button size="small" plain type="info" round wx:if="{{ item.acti_utc - time > 0 && actiJoinNum - item.acti_num  >= 0 }}">
+            已报满
+          </van-button>
+          <van-button size="small" plain type="primary" round wx:if="{{ item.acti_utc - time > 0 && actiJoinNum - item.acti_num  >= 0 }}">
+            查看信息
+          </van-button>
+          <van-button size="small" plain type="default" round wx:if="{{ item.acti_utc - time < 0 }}" disabled>
+            已结束
+          </van-button>
+        </view>
+        <view slot="price">
+          <van-count-down time="{{  item.acti_utc - time  }}" format="DD 天 HH 时 mm 分 ss 秒" />
+        </view>
+        <!-- <view slot="num">
+          <van-button size="small" plain type="default" round disabled>已结束</van-button>
+        </view> -->
+        <view slot="tags">
+          <van-tag mark type="primary">报名人数: {{actiJoinNum}}/{{item.acti_num}}</van-tag>
+        </view>
+      </van-card>
     </view>
     <view class="activity_wrap" wx:for="{{activityList_1}}" wx:key="id" wx:if="{{acti_1}}">
-      <view class="img_wrap">
-        <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.avatarUrl}}" />
-      </view>
-      <view class="activity_wrap_data">
-        <view>{{item.acti_date}}</view>
-        <view class="activity_name">
-          <text>{{item.acti_name}}</text>
-          ·
-          <text>{{item.acti_region}}</text>
+      <van-card title="{{item.acti_name}}" thumb="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/10551/userPic/10.jpg?temp=0.02072300877319999">
+        <view slot="desc">
+          <view>地址：{{item.acti_region}}</view>
         </view>
-        <view class="activity_time">
+        <view slot="desc">
+          <view>日期：{{item.acti_date}}</view>
+        </view>
+        <view slot="footer">
+          <van-button size="small" plain type="primary" round wx:if="{{ item.acti_utc - time > 0 && actiJoinNum - item.acti_num < 0 }}" bind:click="toJoinActi" data-detail="{{item}}">
+            报名中
+          </van-button>
+          <van-button size="small" plain type="info" round wx:if="{{ item.acti_utc - time > 0 && actiJoinNum - item.acti_num  >= 0 }}">
+            已报满
+          </van-button>
+        </view>
+        <view slot="price">
           <van-count-down time="{{  item.acti_utc - time  }}" format="DD 天 HH 时 mm 分 ss 秒" />
         </view>
-      </view>
-      <view class="btn_wrap">
-        <van-button plain type="primary" round>报名中</van-button>
-      </view>
+        <view slot="tags">
+          <van-tag mark type="primary">报名人数: {{actiJoinNum}}/{{item.acti_num}}</van-tag>
+        </view>
+      </van-card>
     </view>
     <view class="activity_wrap" wx:for="{{activityList_2}}" wx:key="id" wx:if="{{acti_2}}">
-      <view class="img_wrap">
-        <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.avatarUrl}}" />
-      </view>
-      <view class="activity_wrap_data">
-        <view>{{item.acti_date}}</view>
-        <view class="activity_name">
-          <text>{{item.acti_name}}</text>
-          ·
-          <text>{{item.acti_region}}</text>
+      <van-card title="{{item.acti_name}}" thumb="https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/10551/userPic/10.jpg?temp=0.02072300877319999">
+        <view slot="desc">
+          <view>地址：{{item.acti_region}}</view>
         </view>
-        <view class="activity_time">
+        <view slot="desc">
+          <view>日期：{{item.acti_date}}</view>
+        </view>
+        <view slot="footer">
+          <van-button size="small" plain type="default" round wx:if="{{ item.acti_utc - time < 0 }}" disabled>
+            已结束
+          </van-button>
+        </view>
+        <view slot="price">
           <van-count-down time="{{  item.acti_utc - time  }}" format="DD 天 HH 时 mm 分 ss 秒" />
         </view>
-      </view>
-      <view class="btn_wrap">
-        <van-button plain type="default" round disabled>已结束</van-button>
-      </view>
+        <view slot="tags">
+          <van-tag mark type="primary">报名人数: {{actiJoinNum}}/{{item.acti_num}}</van-tag>
+        </view>
+      </van-card>
     </view>
   </van-tab>
   <van-tab title="篮球">篮球</van-tab>

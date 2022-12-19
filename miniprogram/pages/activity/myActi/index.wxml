@@ -1,0 +1,49 @@
+<!-- pages/activity/setActi/index.wxml -->
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title="足球">
+    <van-dropdown-menu>
+      <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+      <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="selectItem" />
+    </van-dropdown-menu>
+    <view class="activity_wrap" wx:for="{{activityList}}" wx:key="id">
+      <!-- <view class="img_wrap">
+        <van-image class="vant_img" round fit="cover" width="90rpx" height="90rpx" src="{{userinfo.avatarUrl}}" />
+      </view> -->
+      <view class="activity_wrap_data">
+        <view>{{item.acti_date}}</view>
+        <view class="activity_name">
+          <text>{{item.acti_name}}</text>
+          ·
+          <text>{{item.acti_region}}</text>
+        </view>
+        <view class="activity_time">
+          <van-count-down time="{{  item.acti_utc - time  }}" format="DD 天 HH 时 mm 分 ss 秒" />
+        </view>
+      </view>
+      <view class="btn_warp">
+        <view class="btn_wrap1">
+          <van-button plain type="primary" round wx:if="{{item.acti_utc - time>0}}" data-acti_id="{{item.id}}" bind:click="toSetActi" size="small">
+            修改
+          </van-button>
+          <van-button plain type="danger" round wx:if="{{item.acti_utc - time>0}}" data-acti_id="{{item.id}}" bind:click="toDelActi" size="small">
+            删除
+          </van-button>
+          <van-button plain type="default" round wx:else disabled>已结束</van-button>
+        </view>
+        <view class="btn_wrap2">
+          <van-button plain type="info" round size="small" wx:if="{{item.acti_utc - time>0}}" data-acti_id="{{item.id}}" bind:click="toSetActiNum">
+            设置为已报满
+          </van-button>
+        </view>
+        <view class="btn_wrap3">
+          <van-button plain type="info" round size="small" wx:if="{{item.acti_utc - time>0}}" data-acti_id="{{item.id}}" bind:click="toSetActiNum">
+            查看报名队员
+          </van-button>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+  <van-tab title="篮球">篮球</van-tab>
+  <van-tab title="羽毛球">羽毛球</van-tab>
+  <van-tab title="飞盘">飞盘</van-tab>
+</van-tabs>

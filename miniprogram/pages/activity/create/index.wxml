@@ -9,16 +9,17 @@
   </view>
   <view class="activity_container" bindsubmit="submit">
     <van-cell-group>
-      <van-field value="{{ acti_name }}" name="acti_name" placeholder="请输入活动名称" border="{{ false }}" label="活动名称" required clearable bind:change="onChange1" />
-      <van-field value="{{ acti_region }}" name="acti_region" placeholder="请选择比赛地点" border="{{ false }}" label="比赛地点" required clearable bind:change="onChange2" />
-      <van-field value="{{ dateTime }}" name="date2" placeholder="请选择活动时间" border="{{ false }}" label="活动时间" required clearable readonly use-button-slot>
+      <van-field model:value="{{ acti_name }}" name="acti_name" placeholder="请输入活动名称" border="{{ false }}" label="活动名称" required clearable />
+      <van-field model:value="{{ acti_region }}" name="acti_region" placeholder="请选择比赛地点" border="{{ false }}" label="比赛地点" required clearable />
+      <van-field type="number" model:value="{{ acti_num }}" name="acti_Num" placeholder="请输入比赛人数" border="{{ false }}" label="比赛人数" required clearable bind:change="onChangeNum" />
+      <van-field model:value="{{ dateTime }}" name="date2" placeholder="请选择活动时间" border="{{ false }}" label="活动时间" required clearable readonly use-button-slot>
         <van-button slot="button" size="small" type="primary" bind:click="showPopup">
           点击选择时间
         </van-button>
       </van-field>
       <view>
         <van-field value="{{ acti_type }}" name="acti_type" placeholder="请从下面的选项选择比赛性质" border="{{ false }}" label="比赛性质" required clearable readonly />
-        <van-radio-group value="{{ radio1 }}" bind:change="onRadioChange1" direction="horizontal">
+        <van-radio-group value="{{ radio1 }}" bind:change="onRadioChangeType" direction="horizontal">
           <van-radio name="1" label-disabled>友谊赛</van-radio>
           <van-radio name="2" label-disabled>联赛杯赛</van-radio>
           <van-radio name="3" label-disabled>自定义比赛</van-radio>
@@ -26,13 +27,13 @@
       </view>
       <view>
         <van-field value="{{ acti_resource }}" name="acti_resource" placeholder="请从下面的选项选择比赛场地" border="{{ false }}" label="比赛场地" required clearable readonly />
-        <van-radio-group value="{{ radio2 }}" bind:change="onRadioChange2" direction="horizontal">
+        <van-radio-group value="{{ radio2 }}" bind:change="onRadioChangeResource" direction="horizontal">
           <van-radio name="a" label-disabled>线上电竞</van-radio>
           <van-radio name="b" label-disabled>线下租场</van-radio>
         </van-radio-group>
       </view>
       <van-cell-group>
-        <van-field value="{{ acti_desc }}" label="活动描述" type="textarea" placeholder="请输入活动描述" autosize border="{{ false }}" bind:change="onChange3" show-confirm-bar use-button-slot clearable>
+        <van-field model:value="{{ acti_desc }}" label="活动描述" type="textarea" placeholder="请输入活动描述" autosize border="{{ false }}" bind:change="onChangeDesc" show-confirm-bar use-button-slot clearable>
           <!-- <van-button slot="button" size="small" type="primary">发送验证码</van-button> -->
         </van-field>
       </van-cell-group>

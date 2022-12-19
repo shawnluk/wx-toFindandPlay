@@ -26,7 +26,9 @@
       </view>
     </view>
     <view class="team_join">
-      <van-button plain type="primary" round size="small">查看信息</van-button>
+      <van-button plain type="primary" round size="small" data-teamid="{{item.id}}" bind:click="toCheckTeamInfo">
+        查看信息
+      </van-button>
       <van-button plain type="primary" round size="small" bind:click="joinTeam" data-detail="{{item}}">
         申请加入
       </van-button>

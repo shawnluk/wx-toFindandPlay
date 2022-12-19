@@ -1,12 +1,16 @@
 // pages/activity/index.js
 // import { checkSession } from '../../utils/wxCheckSession.js'
 import { userAPI, activityAPI, teamAPI, wxRequest } from '../../utils/wxRequest'
+import { wxSocketJoinActi, connectServerJoinActi } from '../../utils/socketio'
+import Dialog from '@vant/weapp/dialog/dialog';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    time: 30 * 60 * 60 * 1000,
+    actiJoinNum: 10,
     activityList: [],
     activityList_1: [],
     activityList_2: [],
@@ -60,6 +64,41 @@ Page({
       return 0
     }
   },
+  toJoinActi (e) {
+    console.log(e.currentTarget.dataset.detail);
+    if (!wx.getStorageSync('userinfo').id) {
+      Dialog.alert({
+        title: '您还未登陆',
+        message: '可点击右下角“我的”进行微信登陆',
+        theme: 'round-button',
+      })
+      return
+    }
+    // console.log(wx.getStorageSync('myJoinActi'));
+    if (wx.getStorageSync('myJoinActi')) {
+      Dialog.alert({
+        message: '您已报名申请参加这次活动',
+        theme: 'round-button',
+      })
+      return
+    }
+
+    const joinActivityData = {
+      actiID: e.currentTarget.dataset.detail.id,
+      actiName: e.currentTarget.dataset.detail.acti_name,
+      CaptainID: e.currentTarget.dataset.detail.captainID,
+    }
+
+    wxRequest(activityAPI.joinActivity, 'post', joinActivityData).then(result => {
+      console.log(result);
+      if (result.status === 200) {
+        connectServerJoinActi()
+        wxSocketJoinActi.emit('userJoinActi', joinActivityData)
+      }
+    })
+
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -91,6 +130,9 @@ Page({
         })
       }
     })
+
+    // wxRequest(activityAPI.getJoinActi)
+
   },
 
   /**

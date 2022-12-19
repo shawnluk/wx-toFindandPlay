@@ -20,7 +20,7 @@
   </view>
   <!-- 信息展示 -->
   <view class="my_info_wrap">
-    <van-cell inset="true" title="我的信息" link-type="navigateTo" url="/pages/user/userNews/index" value="{{newsCount===0?'暂无消息':newsCount}}">
+    <van-cell inset="true" title="我的信息" link-type="navigateTo" url="/pages/user/userNews/index" value="{{joinTeamCount+joinActiCount===0?'暂无消息':joinTeamCount+joinActiCount}}">
       <van-icon slot="right-icon" name="myMsg" class-prefix="iconfont" />
     </van-cell>
     <van-cell inset="true" is-link title="我的球队" label="{{teaminfo.joinStatus === 1 ? teaminfo.teamName+'=>等待申请通过' :teaminfo.teamName}}" link-type="navigateTo" url="/pages/team/center/index" />

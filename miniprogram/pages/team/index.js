@@ -109,6 +109,17 @@ Page({
       })
     }
   },
+
+  toCheckTeamInfo (e) {
+    // console.log(e.target.dataset);
+    const teamID = e.target.dataset.teamid
+    wx.navigateTo({
+      url: `/pages/team/checkTeamInfo/index?id=${teamID}`
+    });
+
+  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */

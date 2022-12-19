@@ -12,8 +12,7 @@
 .section input {
   font-size: 28rpx;
 }
-.section:nth-child(4) .section__title {
-  display: flex;
+.section:nth-child(1) {
   align-items: center;
   justify-content: center;
 }

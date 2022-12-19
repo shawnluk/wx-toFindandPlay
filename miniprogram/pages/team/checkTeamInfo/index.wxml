@@ -1,0 +1,43 @@
+<!-- pages/team/checkTeamInfo/index.wxml -->
+<!-- <text>pages/team/checkTeamInfo/index.wxml</text> -->
+<view>
+  <view class="form_title">
+    <van-sticky>
+      <van-button type="info">查看球队信息页面</van-button>
+    </van-sticky>
+  </view>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="section">
+      <van-image fit="cover" width="120rpx" height="120rpx" src="{{teamData.teamPic}}" />
+    </view>
+    <view class="section">
+      <view class="section__title">
+        <text>球队ID号：</text>
+      </view>
+      <input name="teamName" placeholder="{{teamData.id}}" disabled />
+    </view>
+    <view class="section">
+      <view class="section__title">球队队长：</view>
+      <input name="teamDesc" placeholder="{{teamData.newCaptain}}" disabled />
+    </view>
+    <view class="section">
+      <view class="section__title">
+        <text>球队名称：</text>
+      </view>
+      <input name="teamName" placeholder="{{teamData.teamName}}" disabled />
+    </view>
+    <view class="section">
+      <view class="section__title">球队口号：</view>
+      <input name="teamSlogan" placeholder="{{teamData.teamSlogan}}" disabled />
+    </view>
+    <view class="section">
+      <view class="section__title">球队描述：</view>
+      <input name="teamDesc" placeholder="{{teamData.teamDesc}}" disabled />
+    </view>
+    <view class="btn-area">
+      <!-- <van-button formType="submit" type="primary" size="large" round>创建球队</van-button> -->
+      <!-- <van-button type="primary" size="large" round formType="reset">重置信息</van-button> -->
+    </view>
+  </form>
+  <van-button type="primary" size="large" round bind:click="toTeam">返回球队页面</van-button>
+</view>

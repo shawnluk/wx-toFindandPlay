@@ -49,8 +49,8 @@ Page({
     Toast.fail('您还未申请加入任何球队')
   },
 
-  /* 点击去往球队创建页面 */
-  toCreateTeam () {
+  /* 点击去往球队活动创建页面 */
+  toCreateActivity () {
     if (this.data.teaminfo.CaptainID !== this.data.userinfo.id) {
       Toast.fail('您不是球队队长')
       return
@@ -196,6 +196,16 @@ Page({
     })
   },
 
+  /* 点击前往球队活动设置页面 */
+  toMyActivity () {
+    if (this.data.teaminfo.CaptainID !== this.data.userinfo.id) {
+      Toast.fail('您不是球队队长，不能进行球队资料设置')
+      return
+    }
+    wx.navigateTo({
+      url: '/pages/activity/myActi/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

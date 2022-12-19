@@ -62,6 +62,10 @@ export const activityAPI = {
   createAct: '/team/createActivity',
   getActivity: '/team/activity',
   deleteActivity: '/team/deleteActivity',
+  getMyActivity: '/team/getMyActivity',
+  setActivity: '/team/setActivity',
+  joinActivity: '/team/joinActivity',
+  getJoinActiMsg: '/team/getJoinActiMsg'
 }
 
 export const teamAPI = {
@@ -77,4 +81,5 @@ export const teamAPI = {
   teamDelete: '/team/delete',
   deleteTeamJoin: '/team/deleteTeamJoin',
   captainAgreeJoin: '/team/captainAgreeJoin',
+  teamInfoCheck: '/team/teamInfoCheck',
 }

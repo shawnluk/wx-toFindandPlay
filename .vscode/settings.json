@@ -4,6 +4,7 @@
     "fromuserid",
     "socketio",
     "Tabbar",
+    "teamid",
     "teaminfo",
     "weapp"
   ]

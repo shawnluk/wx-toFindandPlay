@@ -1,7 +1,7 @@
 // pages/user/index.js
 // const wxRequest = require('../../utils/wxRequest')
 // const app = getApp()
-import { userAPI, teamAPI, wxRequest } from '../../utils/wxRequest'
+import { userAPI, teamAPI, wxRequest, activityAPI } from '../../utils/wxRequest'
 import { checkSession } from '../../utils/wxCheckSession.js'
 import { connectServer, wxSocket } from '../../utils/socketio'
 import Dialog from '@vant/weapp/dialog/dialog'
@@ -17,7 +17,8 @@ Page({
     logoutShow: false,
     userinfo: {},
     teaminfo: {},
-    newsCount: 0
+    joinTeamCount: 0,
+    joinActiCount: 0
   },
   logout () {
     wx.clearStorageSync()
@@ -177,17 +178,49 @@ Page({
             userinfo: wx.getStorageSync('userinfo'),
             teaminfo: wx.getStorageSync('teaminfo')
           })
+
+
+          connectServer()
+          wxSocket.on('getJoinMsg', (data) => {
+            if (data) {
+              this.setData({
+                joinTeamCount: data.msg.length,
+                newsMsg: data.msg
+              })
+              console.log(data.msg);
+            }
+          })
+
+          const userinfo = wx.getStorageSync('userinfo');
+          // console.log(userinfo.id);
+          wxRequest(activityAPI.getMyActivity, 'post', userinfo).then(res => {
+            console.log(res);
+            if (res.status === 200) {
+              wx.setStorage({
+                key: 'myActi',
+                data: res.ActiData.sort(this.compareItem),
+                success: (result) => {
+                  const myActi = wx.getStorageSync('myActi')
+                  const myActiID = myActi.map(item => { return item.id })
+                  // console.log(myActiID);
+                  wxRequest(activityAPI.getJoinActiMsg, 'post', { myActiID }).then(results => {
+                    console.log(results);
+                    if (results.status === 200) {
+                      wx.setStorage({
+                        key: 'actiJoinUser',
+                        data: results.actiUserData,
+                      })
+                      // console.log(results.actiUserData.length);
+                      this.setData({
+                        joinActiCount: results.actiUserData.length
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
         }
-        connectServer()
-        wxSocket.on('getJoinMsg', (data) => {
-          if (data) {
-            this.setData({
-              newsCount: data.msg.length,
-              newsMsg: data.msg
-            })
-            console.log(data.msg);
-          }
-        })
       }
     })
   },

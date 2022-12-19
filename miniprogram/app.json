@@ -10,7 +10,10 @@
     "pages/user/setUserData/index",
     "pages/team/players/index",
     "pages/activity/create/index",
-    "pages/user/userNews/index"
+    "pages/user/userNews/index",
+    "pages/activity/myActi/index",
+    "pages/activity/setActi/index",
+    "pages/team/checkTeamInfo/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
